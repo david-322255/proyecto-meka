@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Acento circular sutil -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#F9C640"
+        android:strokeWidth="2.5"
+        android:pathData="M54,22 A32,32 0 1,1 53.99,22 Z" />
+    <!-- Emblema geometrico M (Mekatron) en amarillo #F9C640 -->
+    <path
+        android:fillColor="#F9C640"
+        android:pathData="M34,70 L34,38 L42.5,38 L54,54.5 L65.5,38 L74,38 L74,70 L66,70 L66,50.5 L54,66.5 L42,50.5 L42,70 Z" />
+</vector>

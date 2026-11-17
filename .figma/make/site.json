@@ -1,0 +1,10 @@
+{
+  "description": "Gestiona clientes, vehículos, órdenes de trabajo, inventario, citas y pagos en un solo lugar, ayudando a talleres mecánicos a optimizar sus operaciones y fidelizar clientes.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
