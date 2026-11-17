@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-apk:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,11 +32,21 @@ jobs:
       - name: Capacitor sync
         run: npx cap sync android
 
+      - name: Accept Android licenses
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+
       - name: Build debug APK
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug
+          set +e
+          ./gradlew assembleDebug --stacktrace --no-daemon > ../gradle.log 2>&1
+          code=$?
+          if [ $code -ne 0 ]; then
+            grep -m1 -A12 "What went wrong" ../gradle.log | tr '\n' ' ' | sed 's/^/::error::/'
+            echo
+          fi
+          exit $code
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
