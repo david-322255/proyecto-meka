@@ -43,8 +43,8 @@ jobs:
           ./gradlew assembleDebug --stacktrace --no-daemon > ../gradle.log 2>&1
           code=$?
           if [ $code -ne 0 ]; then
-            grep -m1 -A12 "What went wrong" ../gradle.log | tr '\n' ' ' | sed 's/^/::error::/'
-            echo
+            msg=$( (grep -iE 'error|wrong|failed|exception|not found|license|SDK' ../gradle.log | head -8; echo ---; tail -6 ../gradle.log) | cut -c1-180 | tr '\n' '|' )
+            echo "::error::$msg"
           fi
           exit $code
 
